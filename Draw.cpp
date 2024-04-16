@@ -15,6 +15,9 @@ void Engine::draw()
 
         // Switch to main view
         m_Window.setView(m_MainView);
+
+        m_Window.draw(m_Thomas.getSprite());
+        m_Window.draw(m_Bob.getSprite());
     }
     else
     {
@@ -27,6 +30,8 @@ void Engine::draw()
         m_Window.draw(m_BackgroundSprite);
         // Switch to LeftView
         m_Window.setView(m_LeftView);
+        m_Window.draw(m_Bob.getSprite());
+        m_Window.draw(m_Thomas.getSprite());
 
         // Draw Bob's side of the screen
         // Switch to background view
@@ -35,6 +40,8 @@ void Engine::draw()
         m_Window.draw(m_BackgroundSprite);
         // Switch to RightView
         m_Window.setView(m_BGRightView);
+        m_Window.draw(m_Bob.getSprite());
+        m_Window.draw(m_Thomas.getSprite());
     }
 
     // Draw HUD
