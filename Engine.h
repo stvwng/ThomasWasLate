@@ -3,6 +3,7 @@
 #include "TextureHolder.h"
 #include "Bob.h"
 #include "Thomas.h"
+#include "LevelManager.h"
 
 using namespace sf;
 
@@ -14,6 +15,9 @@ class Engine
         // Thomas and Bob, playable characters
         Thomas m_Thomas;
         Bob m_Bob;
+
+        // Class to manage levels
+        LevelManager m_LM;
 
         const int TILE_SIZE = 50;
         const int VERTS_IN_QUAD = 4;
@@ -51,9 +55,20 @@ class Engine
 
         bool m_NewLevelRequired = true;
 
+        // Vertex array for the level tiles
+        VertexArray m_VALevel;
+
+        // 2d array with map for level (pointer to pointer)
+        int** m_ArrayLevel = NULL;
+
+        // Texture for the level tiles
+        Texture m_TextureTiles;
+
         void input();
         void update(float dtAsSeconds);
         void draw();
+        void loadLevel();
+        bool detectCollisions(PlayableCharacter& character);
 
     public:
         Engine();

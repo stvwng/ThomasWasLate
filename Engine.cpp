@@ -22,9 +22,18 @@ Engine::Engine()
     m_RightView.setViewport(FloatRect(0.5f, 0.001f, 0.499f, 0.998f));
     m_BGLeftView.setViewport(FloatRect(0.001f, 0.001f, 0.498f, 0.998f));
     m_BGRightView.setViewport(FloatRect(0.5f, 0.001f, 0.499f, 0.998f));
+
+    // Can the graphics card use shaders?
+    if (!sf::Shader::isAvailable())
+    {
+        m_Window.close();
+    }
     
     m_BackgroundTexture = TextureHolder::GetTexture("graphics/background.png");
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
+
+    // Load texture for background vertex array
+    m_TextureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
 }
 
 void Engine::run()
