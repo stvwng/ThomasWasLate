@@ -4,6 +4,7 @@
 #include "Bob.h"
 #include "Thomas.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
 
 using namespace sf;
 
@@ -18,6 +19,9 @@ class Engine
 
         // Class to manage levels
         LevelManager m_LM;
+
+        // Create a SoundManager
+        SoundManager m_SM;
 
         const int TILE_SIZE = 50;
         const int VERTS_IN_QUAD = 4;
@@ -70,6 +74,12 @@ class Engine
         void loadLevel();
         bool detectCollisions(PlayableCharacter& character);
 
+        // Vector of the best places to emit sounds from
+        void populateEmitters(vector <Vector2f>& vSoundEmitters, int** arrayLevel);
+
+        // Vector of Vector2f for the fire emitter locations
+        vector <Vector2f> m_FireEmitters;
+        
     public:
         Engine();
         void run();
