@@ -5,6 +5,7 @@
 #include "Thomas.h"
 #include "LevelManager.h"
 #include "SoundManager.h"
+#include "HUD.h"
 
 using namespace sf;
 
@@ -22,6 +23,11 @@ class Engine
 
         // Create a SoundManager
         SoundManager m_SM;
+
+        // HUD
+        Hud m_Hud;
+        int m_FramesSinceLastHUDUpdate = 0;
+        int m_TargetFramesPerHUDUpdate = 500;
 
         const int TILE_SIZE = 50;
         const int VERTS_IN_QUAD = 4;
@@ -79,7 +85,7 @@ class Engine
 
         // Vector of Vector2f for the fire emitter locations
         vector <Vector2f> m_FireEmitters;
-        
+
     public:
         Engine();
         void run();
