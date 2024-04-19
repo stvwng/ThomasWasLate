@@ -28,6 +28,11 @@ Engine::Engine()
     {
         m_Window.close();
     }
+    else
+    {
+        // Load 2 shaders (1 vertex, 1 fragment)
+        m_RippleShader.loadFromFile("shaders/rippleShader.vert", "shaders/RippleShader.frag");
+    }
     
     m_BackgroundTexture = TextureHolder::GetTexture("graphics/background.png");
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
